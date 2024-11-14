@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  </head>
+  <body>
+<!--H5端页面大小自适应，rem方案-->
+    <script>
+      (function (doc, win) {
+          var docEl = doc.documentElement,
+              resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+              recalc = function () {
+                  var clientWidth = docEl.clientWidth;
+                  if (!clientWidth) return;
+                  if(clientWidth >= 750){
+                      docEl.style.fontSize = '100px';
+                  }else{
+                      docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                  }
+              };
+
+          if (!doc.addEventListener) return;
+          win.addEventListener(resizeEvt, recalc, false);
+          doc.addEventListener('DOMContentLoaded', recalc, false);
+      })(document, window);
+      // var html = document.documentElement;
+      // var whtml = html.getBoundingClientRect().width;
+      // console.log('12', html, whtml / 7.5);
+      // // 设计图有时候是1080的，在设计图的基础上用宽度（屏幕）/10.8 = 100， 计算rem的时候，直接用量取的px /100 = **rem
+      // html.style.fontSize = whtml / 7.5 + "px";
+  </script>
+<!--全局配置的变量-->
+    <script src="/serverConfig.js"></script>
+    <div id="app"></div>
+<!--移动端调试工具-->
+<!--      <script src="https://cdn.bootcss.com/vConsole/3.2.2/vconsole.min.js"></script>-->
+<!--      <script src="vconsole.min.js"></script>-->
+  </body>
+</html>
